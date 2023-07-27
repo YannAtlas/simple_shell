@@ -1,5 +1,8 @@
 #include "shell.h"
 
+#include <stdio.h>
+#include <stdlib.h>
+
 /**
  * main - the main funct_ion of the code
  *
@@ -7,12 +10,23 @@
  */
 int main(void)
 {
-	int i =  0;
+	char *command;
 
-	while (i)
+	while (1)
 	{
+		display_prompt();
+		command = read_command();
+
+		if (command  == NULL)
+		{
+			printf("\n");
+			break;
+		}
+
+		execute_command(command);
+		free(command);
 	}
 
-	return (EXIT_SUCCESS);
+	return (0);
 }
 
